@@ -17,14 +17,14 @@ EmployeeTracker is a command-line application designed to streamline the managem
 To install the required dependencies, run the following command in your terminal:
 
 ```bash
-npm install
+npm i
 ```
 
 ## Usage
 After installation, run the application using this command:
 
 ```bash
-npm run start
+node index.js
 ```
 
 ## Contributing
