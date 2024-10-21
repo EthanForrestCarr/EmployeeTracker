@@ -24,8 +24,10 @@ npm i
 After installation, run the application using this command:
 
 ```bash
-node index.js
+npm run start
 ```
+
+[Demo Video](https://drive.google.com/file/d/1C7KFhu9zG5AHVXPYHnYCMrOAfWx6Dlwz/view?usp=sharing)
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or submit pull requests to improve this project.

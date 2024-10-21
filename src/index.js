@@ -1,19 +1,20 @@
-import dotenv from 'dotenv'
-import pg from 'pg'
+import dotenv from 'dotenv';
+import pg from 'pg';
 import inquirer from 'inquirer';
 
-const { Client } = require('pg');
-require('dotenv').config();
+dotenv.config();
+const { Client } = pg;
 
 const client = new Client({
-    host: process.env.DB_HOST,
+    host: "localhost",
     user: process.env.DB_USER,
     password: process.env.DB_PASSWORD,
     database: process.env.DB_NAME,
-    port: process.env.DB_PORT,
+    port: 5432,
 });
 
-client.connect();
+await client.connect();
+await promptUser();
 
 function promptUser() {
     inquirer.prompt([
@@ -163,7 +164,7 @@ function addRole() {
             console.error('Error fetching departments:', err);
         } else {
             const departments = res.rows.map(({ id, name }) => ({ name: name, value: id }));
-            
+
             inquirer.prompt([
                 {
                     name: 'title',
@@ -393,7 +394,7 @@ function deleteDepartment() {
             console.error('Error fetching departments:', err);
         } else {
             const departments = res.rows.map(({ id, name }) => ({ name: name, value: id }));
-            
+
             inquirer.prompt([
                 {
                     name: 'departmentId',
@@ -422,7 +423,7 @@ function deleteRole() {
             console.error('Error fetching roles:', err);
         } else {
             const roles = res.rows.map(({ id, title }) => ({ name: title, value: id }));
-            
+
             inquirer.prompt([
                 {
                     name: 'roleId',
@@ -451,7 +452,7 @@ function deleteEmployee() {
             console.error('Error fetching employees:', err);
         } else {
             const employees = res.rows.map(({ id, first_name, last_name }) => ({ name: `${first_name} ${last_name}`, value: id }));
-            
+
             inquirer.prompt([
                 {
                     name: 'employeeId',
@@ -480,7 +481,7 @@ function viewDepartmentBudget() {
             console.error('Error fetching departments:', err);
         } else {
             const departments = res.rows.map(({ id, name }) => ({ name: name, value: id }));
-            
+
             inquirer.prompt([
                 {
                     name: 'departmentId',
