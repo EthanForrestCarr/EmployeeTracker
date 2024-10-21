@@ -1,3 +1,7 @@
+import dotenv from 'dotenv'
+import pg from 'pg'
+import inquirer from 'inquirer';
+
 const { Client } = require('pg');
 require('dotenv').config();
 
@@ -10,8 +14,6 @@ const client = new Client({
 });
 
 client.connect();
-
-const inquirer = require('inquirer');
 
 function promptUser() {
     inquirer.prompt([
